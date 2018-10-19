@@ -111,7 +111,7 @@ app.post('/products/insert',function(req, res){
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var sql = `insert into products(id,title,price) values(${id},${title},${price})`;
+    var sql = `insert into products (id,title,price) values('${id}','${title}','${price}')`;
     console.log('insert: ' + sql)
     res.redirect('/products');
     
