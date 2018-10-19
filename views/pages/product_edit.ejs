@@ -17,8 +17,11 @@
             <small id="helpId" class="form-text text-muted">Product price</small>
         </div>
         <script>
-            $(function(){
-                $('.datepicker').datepicker();
+            $(function () {
+                $.fn.datepicker.defaults.format = "mm/dd/yyyy";
+                $('.datepicker').datepicker({
+                    startDate: '-3d'
+                });
             });
         </script>
         <div class="form-group">
