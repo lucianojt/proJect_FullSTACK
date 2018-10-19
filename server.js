@@ -28,9 +28,9 @@ app.get('/', function (request, response) {
 });
 
 app.get('/about', function (request, response) {
-    var name = 'Aekburut Rawangngan';
-    var hobbies = ['Games', 'Sports', 'Cooking']
-    var bdate = '07/03/2541'
+    var name = 'Jidapa Tassanakul';
+    var hobbies = 'Read a book';
+    var bdate = '22/08/2540'
     response.render('pages/about', { fullname: name, hobbies: hobbies, bdate: bdate });
 
 
