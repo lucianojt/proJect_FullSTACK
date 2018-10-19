@@ -17,16 +17,25 @@
             <small id="helpId" class="form-text text-muted">Product price</small>
         </div>
         
-        <div class="form-group" id='datetimepicker1'>
-            <label for="">Create At</label>
-            <input type="number" class="datepicker" value="" name="date" id="" aria-describedby="helpId" placeholder="">
-            <small id="helpId" class="form-text text-muted">Date-time</small>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
+        <div class="container">
+                <div class="row">
+                    <div class='col-sm-6'>
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#datetimepicker1').datetimepicker();
+                        });
+                    </script>
+                </div>
+            </div>
 
         <button type="submit" class="btn btn-secondary">Cancel</button>
         <button type="submit" class="btn btn-primary">Save</button>
