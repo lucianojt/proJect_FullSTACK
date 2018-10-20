@@ -145,11 +145,12 @@ app.post('/product/insert', function (req, res) {
 
 });
 app.post('/product/delete', function (req, res) {
-    var id = req.body.id;
-    var title = req.body.title;
-    var price = req.body.price;
-    var sql = `delete from products 
-               where id = '${id}',title = '${title}' , price = '${price}`;
+    var id = req.param('id');
+    var sql = 'delete from products';
+    if (id) {
+        sql += ' whrer id =' + id;
+    }
+
     db.any(sql)
         .then(function (data) {
 
