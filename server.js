@@ -119,7 +119,7 @@ app.post('/products/insert', function (req, res) {
 
 });
 app.get('/insert', function (request, response) {
-    response.render('pages/insert');
+    response.render('/insert');
 
 });
 
