@@ -5,7 +5,7 @@ var app = express();
 var db = pgp('postgres://zxsbvfocaemzby:d1645124538119110cd38631af5212c7da75b480d786f19b8effcc3433d1dafd@ec2-54-243-147-162.compute-1.amazonaws.com:5432/dnaovudsp0d1v?ssl=true');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.get('/',function(request, response){
 
@@ -84,7 +84,7 @@ app.get('/products/:pid', function (req, res) {
     var sql = "select * from products where id = " + pid;
     db.any(sql)
         .then(function (data) {
-          
+
             res.render('pages/product_edit', { product: data[0] })
 
         })
@@ -95,19 +95,19 @@ app.get('/products/:pid', function (req, res) {
 
 });
 
-app.post('/products/update',function(req, res){
-var id = req.body.id;
-var title = req.body.title;
-var price = req.body.price;
-var sql = `update products set title =  ${title}, price = ${price} where id = ${id}`;
-console.log('UPDATE: ' + sql)
-res.redirect('/products');
+app.post('/products/update', function (req, res) {
+    var id = req.body.id;
+    var title = req.body.title;
+    var price = req.body.price;
+    var sql = `update products set title =  ${title}, price = ${price} where id = ${id}`;
+    console.log('UPDATE: ' + sql)
+    res.redirect('/products');
 
 
 });
 
 
-app.post('/products/insert',function(req, res){
+app.post('/products/insert', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
@@ -115,12 +115,15 @@ app.post('/products/insert',function(req, res){
                values('${id}','${title}','${price}')`;
     console.log('insert: ' + sql)
     res.redirect('/products');
-    
-    
-    });
 
+
+});
+app.get('/insert', function (request, response) {
+    response.render('pages/insert');
+
+});
 
 var port = process.env.PORT || 8080;
-app.listen(port, function() {
-console.log('App is running on http://localhost:' + port);
+app.listen(port, function () {
+    console.log('App is running on http://localhost:' + port);
 });
