@@ -144,7 +144,7 @@ app.post('/product/insert', function (req, res) {
 
 
 });
-app.get('/products_delete/:id', function (req, res) {
+app.get('/product_delete/:id', function (req, res) {
     var id = req.params.id;
     var sql = 'delete from products';
     if (id) {
