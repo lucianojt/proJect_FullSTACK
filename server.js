@@ -164,20 +164,18 @@ app.get('/insert_user', function (req, res) {
     res.render('pages/insert_user')
 
 });
+
+
 app.get('/user/:pid', function (req, res) {
     var pid = req.params.pid;
     var sql = "select * from users where id = " + pid;
     db.any(sql)
         .then(function (data) {
-
             res.render('pages/user_edit', { user: data[0] })
-
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
-
         })
-
 });
 
 app.post('/user/update', function (req, res) {
@@ -189,18 +187,12 @@ app.post('/user/update', function (req, res) {
                where id = '${id}'`;
     db.any(sql)
         .then(function (data) {
-
             res.render('/user/update')
-
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
-
         })
     res.redirect('/user');
-
-
-
 });
 
 app.post('/user/insert', function (req, res) {
@@ -211,17 +203,12 @@ app.post('/user/insert', function (req, res) {
                values('${id}','${email}','${password}')`;
     db.any(sql)
         .then(function (data) {
-
             res.render('/user/insert')
-
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
-
         })
     res.redirect('/user');
-
-
 });
 
 app.get('/user_delete/:id', function (req, res) {
