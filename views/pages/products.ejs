@@ -28,14 +28,21 @@
                         <a class="btn btn-primary" href="/products/<%= product.id%>" role="button">Edit</a>
                     </td>
                     <td>
-                       
-                    <a class="btn btn-danger" href="/product_delete/<%= product.id%>" role="button">Delete</a>
-                    
+                    <a class="btn btn-danger"  onclick="return ConfirmDelete()" href="/product_delete/<%= product.id%>" role="button">Delete</a>
                     </td>
                     <td>asd</td>
                 </tr>
                 <%}); %>
         </tbody>
     </table>
+    <script>
+            function ConfirmDelete() {
+                var result = confirm("Do you want to delete [Dictionary ?]");
+                if(result){
+
+                }
+            }
+                
+        </script>
 
     <% include ../partials/footer %>
