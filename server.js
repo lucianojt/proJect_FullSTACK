@@ -109,11 +109,11 @@ app.post('/products/update', function (req, res) {
 });
 
 
-app.post('/products/insert', function (req, res) {
+app.post('/product/insert', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var sql = `INSERT INTO products (id,title,price) 
+    var sql = `INSERT INTO product (id,title,price) 
                VALUES ('${id}','${title}','${price}')`;
     console.log('insert: ' + sql)
     res.redirect('/products');
