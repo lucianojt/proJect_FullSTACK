@@ -177,6 +177,29 @@ app.get('/user/:pid', function (req, res) {
         })
 
 });
+
+app.post('/user/update', function (req, res) {
+    var id = req.body.id;
+    var title = req.body.email;
+    var price = req.body.password;
+    var sql = `update users 
+               set email =  '${email}' , password = '${password}'
+               where id = '${id}'`;
+    db.any(sql)
+        .then(function (data) {
+
+            res.render('/user/update')
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+
+        })
+    res.redirect('/user');
+  
+
+
+});
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
     console.log('App is running on http://localhost:' + port);
