@@ -99,7 +99,9 @@ app.post('/products/update', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var sql = `update products set title =  ${title}, price = ${price} where id = ${id}`;
+    var sql = `UPDATE products 
+               SET title =  '${title}', price = '${price}' 
+               WHERE id = '${id}'`;
     console.log('UPDATE: ' + sql)
     res.redirect('/products');
 
@@ -111,8 +113,8 @@ app.post('/products/insert', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var sql = `insert into products (id,title,price) 
-               values('${id}','${title}','${price}')`;
+    var sql = `INSERT INTO products (id,title,price) 
+               VALUES ('${id}','${title}','${price}')`;
     console.log('insert: ' + sql)
     res.redirect('/products');
 
@@ -123,7 +125,7 @@ app.post('/products/delete', function (req, res) {
     var title = req.body.title;
     var price = req.body.price;
     var sql = `DELETE FROME products
-               WHERE title = (id = ${id} ,${title}, price = ${price},id = ${id});`;
+               WHERE id = '${id}' , title = '${title}', price = '${price}'`;
     console.log('insert: ' + sql)
     res.redirect('/products');
 
