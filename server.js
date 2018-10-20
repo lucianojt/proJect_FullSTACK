@@ -141,10 +141,6 @@ app.post('/products/insert', function (req, res) {
 
 });
 
-app.post('/insert', function (req, res) {
-   
-
-});
 
 app.post('/products/delete', function (req, res) {
     var id = req.body.id;
