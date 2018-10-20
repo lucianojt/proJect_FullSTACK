@@ -148,7 +148,7 @@ app.get('/product_delete/:id', function (req, res) {
     var id = req.params.id;
     var sql = `DELETE FROM products`;
     if (id) {
-        sql += 'where id = ' + id;
+        sql += ' WHERE id =' + id;
     }
     db.any(sql)
         .then(function (data) {
