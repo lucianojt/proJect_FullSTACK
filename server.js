@@ -125,10 +125,10 @@ app.post('/products/insert', function (req, res) {
     var title = req.body.title;
     var price = req.body.price;
     var sql = `INSERT INTO products (id,title,price) 
-               VALUES (${id},${title},${price})`;
+               VALUES ('${id}','${title}','${price}')`;
     db.any(sql)
         .then(function (data) {
-            console.log('insert ???');
+            console.log('Not going home');
             res.render('pages/products')
 
         })
@@ -136,8 +136,6 @@ app.post('/products/insert', function (req, res) {
             console.log('ERROR:' + error);
 
         })
-
-    console.log('insert: ' + sql)
     res.redirect('/products');
 
 
