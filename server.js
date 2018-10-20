@@ -106,6 +106,10 @@ app.post('/products/update', function (req, res) {
 
 });
 
+app.get('/insert', function (req, res) {
+    res.render('pages/insert')
+
+});
 
 app.post('/product/insert', function (req, res) {
     var id = req.body.id;
@@ -128,10 +132,7 @@ app.post('/product/insert', function (req, res) {
 
 });
 
-app.get('/insert', function (req, res) {
-    res.render('pages/insert')
 
-});
 
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
