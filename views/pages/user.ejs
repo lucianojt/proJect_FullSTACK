@@ -1,4 +1,5 @@
 <% include ../partials/header %>
+<h1 class="text-center">--User--</h1>
     <table class="table">
         <thead>
             <tr>
@@ -6,6 +7,7 @@
                 <th>Email</th>
                 <th>Password</th>
                 <th><a class="btn btn-success" href="/insert_user" role="button">Add New</a></th>
+                <th>Delete</th>
                 
             </tr>
         </thead>
@@ -40,7 +42,16 @@
                 }
             }
                 
-        </script>
-
+    </script>
+    <script>
+      $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+         var value = $(this).val().toLowerCase();
+         $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+         });
+       });
+    });
+</script>
 
     <% include ../partials/footer %>
