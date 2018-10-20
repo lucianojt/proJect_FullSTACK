@@ -101,7 +101,7 @@ app.post('/product/update', function (req, res) {
     var price = req.body.price;
     var sql = `update products 
                set title =  ${title} , price = ${price}
-               where id = '${id}'`;
+               where id =  ${id}`;
     db.any(sql)
         .then(function (data) {
 
@@ -143,7 +143,27 @@ app.post('/product/insert', function (req, res) {
 
 
 });
+app.post('/product/delete', function (req, res) {
+    var id = req.body.id;
+    var title = req.body.title;
+    var price = req.body.price;
+    var sql = `delete products 
+               where title =  '${title}' , price = '${price}', id = '${id}'`;
+    db.any(sql)
+        .then(function (data) {
 
+            res.render('/product/delete')
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+
+        })
+    res.redirect('/products');
+  
+
+
+});
 
 
 var port = process.env.PORT || 8080;
