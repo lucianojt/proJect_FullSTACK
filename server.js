@@ -128,7 +128,7 @@ app.post('/products/insert', function (req, res) {
                VALUES ('${id}','${title}','${price}')`;
     db.any(sql)
         .then(function (data) {
-
+            console.log('insert ???');
             res.render('pages/products')
 
         })
@@ -142,6 +142,9 @@ app.post('/products/insert', function (req, res) {
 
 
 });
+
+
+
 app.post('/products/delete', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
