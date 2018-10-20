@@ -7,8 +7,6 @@
                 <th>Title</th>
                 <th>Price</th>
                 <th> <a class="btn btn-success" href="/insert" role="button">Add New</a></th>
-                <th>Delete</th>
-             
             </tr>
         </thead>
         <tbody id="myTable">
@@ -27,9 +25,7 @@
                     <td>
                         <a class="btn btn-primary" href="/products/<%= product.id%>" role="button">Edit</a>
                     </td>
-                    <td>
-                    <a class="btn btn-danger"  onclick="return ConfirmDelete()" href="/product_delete/<%= product.id%>" role="button">Delete</a>
-                    </td>
+                   
                     
                 </tr>
                 <%}); %>
