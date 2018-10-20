@@ -148,20 +148,15 @@ app.get('/products_delete/:id', function (req, res) {
     var id = req.params.id;
     var sql = 'delete from products';
     if (id) {
-        sql += ' whrer id =' + id;
+        sql += ' where id =' + id;
     }
-
     db.any(sql)
         .then(function (data) {
-
              res.redirect('/products');
-            
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
-
         })
-
 });
 
 
