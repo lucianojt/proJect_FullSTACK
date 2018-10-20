@@ -123,7 +123,7 @@ app.post('/products/delete', function (req, res) {
     var title = req.body.title;
     var price = req.body.price;
     var sql = `DELETE FROME products
-               WHERE title =  ${title}, price = ${price} where id = ${id};`;
+               WHERE title = (id = ${id} ,${title}, price = ${price},id = ${id});`;
     console.log('insert: ' + sql)
     res.redirect('/products');
 
