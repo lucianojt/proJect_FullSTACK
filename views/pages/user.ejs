@@ -7,8 +7,6 @@
                 <th>Email</th>
                 <th>Password</th>
                 <th><a class="btn btn-success" href="/insert_user" role="button">Add New</a></th>
-                <th>Delete</th>
-                
             </tr>
         </thead>
         <tbody id="myTable">
@@ -24,25 +22,12 @@
                         <%=user.password %>
                     </td>
                     <td>
-                    <a class="btn btn-primary" href="/user/<%= user.id%>" role="button">Edit</a>
+                    <a class="btn btn-secondary" href="/user/<%= user.id%>" role="button">Edit</a>
                 </td>
-                <td>
-                <a class="btn btn-danger"  onclick="return ConfirmDelete()" href="/user_delete/<%=user.id %>" role="button">Delete</a>
-                </td>
-                
                 </tr>
                 <%}); %>
         </tbody>
     </table>
-    <script>
-            function ConfirmDelete() {
-                var result = confirm("Do you want to delete [Dictionary ?]");
-                if(result){
-
-                }
-            }
-                
-    </script>
     <script>
       $(document).ready(function(){
         $("#myInput").on("keyup", function() {
