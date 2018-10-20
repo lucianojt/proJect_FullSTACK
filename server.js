@@ -201,6 +201,27 @@ app.post('/user/update', function (req, res) {
 
 
 });
+
+app.post('/user/insert', function (req, res) {
+    var id = req.body.id;
+    var email = req.body.email;
+    var password = req.body.password;
+    var sql = `insert into users (id,email,password) 
+               values('${id}','${email}','${password}')`;
+    db.any(sql)
+        .then(function (data) {
+
+            res.render('/user/insert')
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+
+        })
+    res.redirect('/user');
+
+
+});
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
     console.log('App is running on http://localhost:' + port);
