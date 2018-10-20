@@ -144,7 +144,7 @@ app.post('/product/insert', function (req, res) {
 
 
 });
-app.get('/product/delete', function (req, res) {
+app.post('/product/delete', function (req, res) {
     var id = req.param('id');
     var sql = 'delete from products';
     if (id) {
@@ -155,7 +155,7 @@ app.get('/product/delete', function (req, res) {
         .then(function (data) {
 
             res.render('/product/delete')
-
+            console.log('???????');
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
