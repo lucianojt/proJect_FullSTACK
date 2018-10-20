@@ -154,17 +154,13 @@ app.get('/products_delete/:id', function (req, res) {
     db.any(sql)
         .then(function (data) {
 
-            res.render('/products')
+             res.redirect('/products');
             
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
 
         })
-  
-    res.redirect('/products');
-  
-
 
 });
 
