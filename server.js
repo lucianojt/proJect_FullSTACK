@@ -155,13 +155,13 @@ app.get('/products_delete/:id', function (req, res) {
         .then(function (data) {
 
             res.render('/products')
-            console.log('???????');
+            
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
 
         })
-    console.log('???????');
+  
     res.redirect('/products');
   
 
