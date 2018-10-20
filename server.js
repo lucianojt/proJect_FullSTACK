@@ -146,13 +146,13 @@ app.post('/product/insert', function (req, res) {
 });
 app.get('/product_delete/:id', function (req, res) {
     var id = req.params.id;
-    var sql = 'delete from products';
+    var sql = 'DELETE FROM products';
     if (id) {
         sql += 'where id = ' + id;
     }
     db.any(sql)
         .then(function (data) {
-             res.redirect('/product_delete');
+             res.redirect('/products');
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
