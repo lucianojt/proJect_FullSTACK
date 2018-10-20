@@ -222,6 +222,21 @@ app.post('/user/insert', function (req, res) {
 
 
 });
+
+app.get('/user_delete/:id', function (req, res) {
+    var id = req.params.id;
+    var sql = 'DELETE FROM users';
+    if (id) {
+        sql += ' WHERE id =' + id;
+    }
+    db.any(sql)
+        .then(function (data) {
+            res.redirect('/user');
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+});
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
     console.log('App is running on http://localhost:' + port);

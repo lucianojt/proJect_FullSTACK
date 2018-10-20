@@ -24,6 +24,10 @@
                     <td>
                     <a class="btn btn-primary" href="/user/<%= user.id%>" role="button">Edit</a>
                 </td>
+                <td>
+                <a class="btn btn-danger"  onclick="return ConfirmDelete()" href="/user_delete/<%=user.id %>" role="button">Delete</a>
+                </td>
+                
                 </tr>
                 <%}); %>
         </tbody>
