@@ -62,7 +62,8 @@ app.get('/products', function (req, res) {
 app.get('/user', function (req, res) {
 
     var id = req.param('id');
-    var sql = 'select * from users';
+    var sql = `select * from users 
+               ORDER BY ABS(id) ASC `;
     if (id) {
         sql += ' whrer id =' + id;
     }
@@ -114,7 +115,7 @@ app.post('/product/update', function (req, res) {
 
         })
     res.redirect('/products');
-  
+
 
 
 });
@@ -152,7 +153,7 @@ app.get('/product_delete/:id', function (req, res) {
     }
     db.any(sql)
         .then(function (data) {
-             res.redirect('/products');
+            res.redirect('/products');
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
@@ -196,7 +197,7 @@ app.post('/user/update', function (req, res) {
 
         })
     res.redirect('/user');
-  
+
 
 
 });
