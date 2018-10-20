@@ -225,6 +225,14 @@ app.get('/user_delete/:id', function (req, res) {
             console.log('ERROR:' + error);
         })
 });
+app.get('/report_product', function (req, res) {
+    res.render('pages/report_product')
+
+});
+app.get('/report_user', function (req, res) {
+    res.render('pages/report_user')
+
+});
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
     console.log('App is running on http://localhost:' + port);
