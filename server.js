@@ -95,11 +95,11 @@ app.get('/products/:pid', function (req, res) {
 
 });
 
-app.post('/products/update',function(req, res){
+app.post('/product/update',function(req, res){
 var id = req.body.id;
 var title = req.body.title;
 var price = req.body.price;
-var sql = `update products set title =  ${title}, price = ${price} where id = ${id}`;
+var sql = `update product set title =  ${title}, price = ${price} where id = ${id}`;
 console.log('UPDATE: ' + sql)
 res.redirect('/products');
 
@@ -107,11 +107,11 @@ res.redirect('/products');
 });
 
 
-app.post('/products/insert',function(req, res){
+app.post('/product/insert',function(req, res){
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var sql = `insert into products (id,title,price) 
+    var sql = `insert into product (id,title,price) 
                values('${id}','${title}','${price}')`;
     console.log('insert: ' + sql)
     res.redirect('/products');
