@@ -118,7 +118,8 @@ app.post('/products/insert', function (req, res) {
 
 
 });
-app.get('/insert', function (request, response) {
+
+app.get('/insert', function (req, res) {
     res.render('pages/insert')
 
 });
