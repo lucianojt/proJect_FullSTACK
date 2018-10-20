@@ -39,7 +39,8 @@ app.get('/about', function (request, response) {
 app.get('/products', function (req, res) {
 
     var id = req.param('id');
-    var sql = 'select * from products';
+    var sql = `select * from products 
+               ORDER BY ABS(id) ASC `;
     if (id) {
         sql += ' whrer id =' + id;
     }
