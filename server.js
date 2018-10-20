@@ -100,8 +100,19 @@ app.post('/products/update', function (req, res) {
     var title = req.body.title;
     var price = req.body.price;
     var sql = `UPDATE products 
-               SET title =  '${title}', price = '${price}' 
-               WHERE id = '${id}'`;
+               SET title =  ${title}, price = ${price} 
+               WHERE id = ${id}`;
+    db.any(sql)
+        .then(function (data) {
+
+            res.render('pages/products')
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+
+        })
+
     console.log('UPDATE: ' + sql)
     res.redirect('/products');
 
@@ -109,12 +120,23 @@ app.post('/products/update', function (req, res) {
 });
 
 
-app.post('/product/insert', function (req, res) {
+app.post('/products/insert', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var sql = `INSERT INTO product (id,title,price) 
+    var sql = `INSERT INTO products (id,title,price) 
                VALUES ('${id}','${title}','${price}')`;
+    db.any(sql)
+        .then(function (data) {
+
+            res.render('pages/products')
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+
+        })
+
     console.log('insert: ' + sql)
     res.redirect('/products');
 
