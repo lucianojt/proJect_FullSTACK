@@ -145,7 +145,7 @@ app.post('/product/insert', function (req, res) {
 
 });
 app.post('/product/delete', function (req, res) {
-    var id = req.param.id;
+    var id = req.param('id');
     var sql = 'delete from products';
     if (id) {
         sql += ' whrer id =' + id;
@@ -161,6 +161,7 @@ app.post('/product/delete', function (req, res) {
             console.log('ERROR:' + error);
 
         })
+    console.log('???????');
     res.redirect('/products');
   
 
