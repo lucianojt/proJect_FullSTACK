@@ -1,0 +1,45 @@
+<% include ../partials/header %>
+    <form action="" method="post">
+        <div class="form-group">
+            <label for="">ID</label>
+            <input type="number" class="form-control" value="<%= user.id%>" name="id" id="" aria-describedby="helpId" placeholder="">
+            <small id="helpId" class="form-text text-muted">user ID</small>
+        </div>
+
+        <div class="form-group">
+            <label for="">Email</label>
+            <input type="text" class="form-control" value="<%= user.emil%>" name="title" id="" aria-describedby="helpId" placeholder="">
+            <small id="helpId" class="form-text text-muted">user email</small>
+        </div>
+        <div class="form-group">
+            <label for="">Password</label>
+            <input type="number" class="form-control" value="<%= user.password%>" name="price" id="" aria-describedby="helpId" placeholder="">
+            <small id="helpId" class="form-text text-muted">user Password</small>
+        </div>
+
+
+        <div class="form-group">
+            <label for="">Create At</label>
+            <input id="datepicker" class="form-control" name="date" id="" aria-describedby="helpId" placeholder="">
+            <script>
+                $('#datepicker').datepicker({
+                    uiLibrary: 'bootstrap4'
+                });
+            </script>
+            <small id="helpId" class="form-text text-muted">Date</small>
+        </div>
+
+        <a class="btn btn-secondary" href="/user" role="button">Cancel</a>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a class="btn btn-danger" onclick="return ConfirmDelete()" href="" role="button">Delete</a>
+        <script>
+            function ConfirmDelete() {
+                var result = confirm("Do you want to delete [Dictionary ?]");
+                if(result){
+
+                }
+            }
+                
+        </script>
+    </form>
+    <% include ../partials/footer %>
