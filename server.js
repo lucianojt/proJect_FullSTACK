@@ -148,7 +148,8 @@ app.post('/product/delete', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var sql = 'delete from products where id = id';
+    var sql = `delete from products 
+               where id = ${id}`;
     db.any(sql)
         .then(function (data) {
 
