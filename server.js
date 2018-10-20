@@ -158,7 +158,10 @@ app.get('/product_delete/:id', function (req, res) {
             console.log('ERROR:' + error);
         })
 });
+app.get('/insert_user', function (req, res) {
+    res.render('pages/insert_user')
 
+});
 
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
