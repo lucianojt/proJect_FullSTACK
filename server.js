@@ -162,7 +162,21 @@ app.get('/insert_user', function (req, res) {
     res.render('pages/insert_user')
 
 });
+app.get('/user/:pid', function (req, res) {
+    var pid = req.params.pid;
+    var sql = "select * from users where id = " + pid;
+    db.any(sql)
+        .then(function (data) {
 
+            res.render('pages/user_edit', { user: data[0] })
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+
+        })
+
+});
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
     console.log('App is running on http://localhost:' + port);
