@@ -232,9 +232,10 @@ app.get('/product_report/:pid',function (req, res) {
  });
  app.get('/user_report/:pid',function (req, res) {
     var id = req.params.pid;
-    var sql = `select title,name
-    from products,purchases
-    where user_id = ${id}`;
+    var sql = `select title,price
+    from users,products
+    where products.id = users.id
+    and user_id = ${id}`;
 
     db.any(sql)
         .then(function(data){
