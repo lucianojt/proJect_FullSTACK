@@ -226,9 +226,24 @@ app.get('/user_delete/:id', function (req, res) {
         })
 });
 app.get('/report_product', function (req, res) {
-    res.render('pages/report_product')
+    var id = req.param('id');
+    var sql = `select * from users 
+               ORDER BY ABS(id) ASC `;
+    if (id) {
+        sql += ' whrer id =' + id;
+    }
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.render('pages/report_product', { user: data })
 
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+
+        })
 });
+
 app.get('/report_user', function (req, res) {
     res.render('pages/report_user')
 
