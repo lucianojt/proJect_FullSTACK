@@ -234,9 +234,9 @@ app.get('/product_report/:pid',function (req, res) {
     var id = req.params.pid;
     var sql = `select user_id, name, title
     from products,purchases,user
-    where products.id = user_id
+    where user.id=user_id
 
-    and product_id = ${id}`;
+    and user_id = ${id}`;
     db.any(sql)
         .then(function(data){
             console.log('DATA:'+data);
