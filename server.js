@@ -226,13 +226,11 @@ app.get('/user_delete/:id', function (req, res) {
         })
 });
 app.get('/report_product', function (req, res) {
-    var id = req.param('id');
-    var sql = `select purchases.id , purchases.name , purchase_items.state
+    
+    var sql = `select id , purchases.name , purchase_items.state
                from purchases
                inner join purchase_items on purchases.id = purchase_items.id`;
-    if (id) {
-        sql += ' whrer id =' + id;
-    }
+    
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
