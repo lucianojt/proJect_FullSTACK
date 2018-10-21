@@ -233,7 +233,7 @@ app.get('/product_report/:pid',function (req, res) {
  app.get('/user_report/:pid',function (req, res) {
     var id = req.params.pid;
     var sql = `select user_id, name, title
-    from products,purchases
+    from products,purchases,user
     where products.id = user_id
 
     and product_id = ${id}`;
