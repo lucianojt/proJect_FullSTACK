@@ -24,7 +24,6 @@ app.set('view engine', 'ejs');
 
 app.get('/', function (request, response) {
     response.render('pages/index');
-
 });
 
 app.get('/about', function (request, response) {
@@ -32,8 +31,6 @@ app.get('/about', function (request, response) {
     var hobbies = 'Read a book';
     var bdate = '22/08/2540'
     response.render('pages/about', { fullname: name, hobbies: hobbies, bdate: bdate });
-
-
 });
 
 app.get('/products', function (req, res) {
@@ -44,8 +41,6 @@ app.get('/products', function (req, res) {
     if (id) {
         sql += ' whrer id =' + id;
     }
-
-
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
@@ -54,7 +49,6 @@ app.get('/products', function (req, res) {
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
-
         })
 });
 
@@ -67,8 +61,6 @@ app.get('/user', function (req, res) {
     if (id) {
         sql += ' whrer id =' + id;
     }
-
-
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
@@ -115,9 +107,6 @@ app.post('/product/update', function (req, res) {
 
         })
     res.redirect('/products');
-
-
-
 });
 
 app.get('/insert', function (req, res) {
@@ -142,8 +131,6 @@ app.post('/product/insert', function (req, res) {
 
         })
     res.redirect('/products');
-
-
 });
 app.get('/product_delete/:id', function (req, res) {
     var id = req.params.id;
@@ -164,7 +151,6 @@ app.get('/insert_user', function (req, res) {
     res.render('pages/insert_user')
 
 });
-
 
 app.get('/user/:pid', function (req, res) {
     var pid = req.params.pid;
@@ -235,7 +221,25 @@ app.get('/product_report/:pid',function (req, res) {
     db.any(sql)
         .then(function(data){
             console.log('DATA:'+data);
-            res.render('pages/report_product' , { report:data})
+            res.render('pages/report_product')
+    
+        })
+        .catch(function(data){
+                console.log('ERROR:'+console.error);
+    })
+
+    
+ });
+ app.get('/user_report/:pid',function (req, res) {
+    var id = req.params.pid;
+    var sql = `select user_id, name, title
+    from products,purchases
+    where products.id = user_id
+    and product_id = ${id}`;
+    db.any(sql)
+        .then(function(data){
+            console.log('DATA:'+data);
+            res.render('pages/report_user')
     
         })
         .catch(function(data){
@@ -246,10 +250,7 @@ app.get('/product_report/:pid',function (req, res) {
  });
 
 
-app.get('/report_user', function (req, res) {
-    res.render('pages/report_user')
 
-});
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
     console.log('App is running on http://localhost:' + port);
