@@ -227,8 +227,9 @@ app.get('/user_delete/:id', function (req, res) {
 });
 app.get('/report_product', function (req, res) {
     var id = req.param('id');
-    var sql = `select id,name,address from purchases 
-               ORDER BY ABS(id) ASC `;
+    var sql = `select id , purchases.name , purchase_items.state
+               from purchases
+               inner join purchase_items on purchases.id = purchase_items.id`;
     if (id) {
         sql += ' whrer id =' + id;
     }
