@@ -244,12 +244,7 @@ app.get('/product_report/:pid',function (req, res) {
 
     
  });
-app.get('/report_product', function (req, res) {
-   
-            res.render('pages/report_product')
 
-      
-});
 
 app.get('/report_user', function (req, res) {
     res.render('pages/report_user')
