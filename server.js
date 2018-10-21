@@ -221,7 +221,7 @@ app.get('/product_report/:pid',function (req, res) {
     db.any(sql)
         .then(function(data){
             console.log('DATA:'+data);
-            res.render('pages/report_product')
+            res.render('pages/report_product' , { report:data})
     
         })
         .catch(function(data){
@@ -235,11 +235,12 @@ app.get('/product_report/:pid',function (req, res) {
     var sql = `select user_id, name, title
     from products,purchases
     where products.id = user_id
+
     and product_id = ${id}`;
     db.any(sql)
         .then(function(data){
             console.log('DATA:'+data);
-            res.render('pages/report_user')
+            res.render('pages/report_user' , { report:data})
     
         })
         .catch(function(data){
