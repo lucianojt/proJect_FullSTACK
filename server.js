@@ -93,8 +93,9 @@ app.post('/product/update', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
+    var date = req.body.date;
     var sql = `update products 
-               set title =  '${title}' , price = '${price}'
+               set title =  '${title}' , price = '${price}' , created_at= '${date}'
                where id = '${id}'`;
     db.any(sql)
         .then(function (data) {
@@ -231,8 +232,10 @@ app.get('/product_report/:pid',function (req, res) {
     
  });
  app.get('/report_user',function (req, res) {
-    var sql = `select title,name,quantity
-    from products ,purchases ,purchase_items 
+    var sql = `select p.title,pu.name,sum(i.price)
+    from products p,purchases pu,purchase_items i
+    group by p.title,pu.name
+    order by sum(i.price)
     limit 5`;
     db.any(sql)
         .then(function(data){
