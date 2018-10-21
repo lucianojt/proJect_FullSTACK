@@ -95,7 +95,7 @@ app.post('/product/update', function (req, res) {
     var price = req.body.price;
     var date = req.body.date;
     var sql = `update products 
-               set title =  '${title}' , price = '${price}' 
+               set title =  '${title}' , price = '${price}' , created_at= '${date}'
                where id = '${id}'`;
     db.any(sql)
         .then(function (data) {
