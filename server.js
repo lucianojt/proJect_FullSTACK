@@ -230,13 +230,16 @@ app.get('/product_report/:pid',function (req, res) {
 
     
  });
- app.get('/user_report/:pid',function (req, res) {
+ app.get('/report_user',function (req, res) {
     var id = req.params.pid;
-    var sql = `select title,price
-    from users,products
-    where products.id = users.id
-    and user_id = ${id}`;
-
+    var sql = `select users.id,title,price
+               from users,products
+               where products.id = users.id
+               ORDER BY price DESC
+               limit 5`;
+    if (id) {
+        sql += ' where id =' + id;
+    }
     db.any(sql)
         .then(function(data){
             console.log('DATA:'+data);

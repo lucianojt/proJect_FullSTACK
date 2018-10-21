@@ -1,25 +1,25 @@
 <% include ../partials/header %>
-<h1 class="text-center"><%=reportu[0].email %></h1>
+<h1 class="text-center">??DKVD????</h1>
     <table class="table">
         <thead>
             <tr>
-               
+                <th>ID</th>
                 <th>Title</th>
                 <th>Price</th>
-               
             </tr>
         </thead>
         <tbody id="myTable">
             <% reportu.forEach(function(reportu){%>
                 <tr>
                     <td scope="row">
+                        <%=reportu.id %>
+                    </td>
+                    <td> 
                         <%=reportu.title %>
                     </td>
                     <td> 
                         <%=reportu.price %>
                     </td>
-                   
-                  
                 </tr>
                 <%}); %>
         </tbody>
