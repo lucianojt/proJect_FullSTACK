@@ -7,7 +7,8 @@
                 <th>Title</th>
                 <th>Price</th>
                 <th> <a class="btn btn-info" href="/insert" role="button">Add New</a></th>
-                <th>Date At</th>
+                <th>Report</th>
+                
             </tr>
         </thead>
         <tbody id="myTable">
@@ -27,7 +28,7 @@
                         <a class="btn btn-secondary" href="/products/<%= product.id%>" role="button">Edit</a>
                     </td>
                    
-                    <td></td>                    
+                    <td> <a class="btn btn-info" href="/product_report/<%= product.id%>" role="button">Report</a></td>                    
                 </tr>
                 <%}); %>
         </tbody>

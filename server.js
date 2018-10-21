@@ -225,24 +225,30 @@ app.get('/user_delete/:id', function (req, res) {
             console.log('ERROR:' + error);
         })
 });
-app.get('/report_product', function (req, res) {
-    var id = req.param('id');
-    var sql = `select id ,name,state
-               from purchases , purchase_items
-               where purchases.id = purchase_items.id `;
-    if (id) {
-        sql += ' whrer id =' + id;
-    }
+
+app.get('/product_report/:pid',function (req, res) {
+    var id = req.params.pid;
+    var sql = `select product_id, title, products.price, purchase_id, quantity
+    from products, purchase_items
+    where products.id = product_id
+    and product_id = ${id}`;
     db.any(sql)
-        .then(function (data) {
-            console.log('DATA:' + data);
-            res.render('pages/report_product', { user: data })
-
+        .then(function(data){
+            console.log('DATA:'+data);
+            res.render('pages/report_product' , { report:data})
+    
         })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
+        .catch(function(data){
+                console.log('ERROR:'+console.error);
+    })
 
-        })
+    
+ });
+app.get('/report_product', function (req, res) {
+   
+            res.render('pages/report_product')
+
+      
 });
 
 app.get('/report_user', function (req, res) {
