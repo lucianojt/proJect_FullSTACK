@@ -215,7 +215,10 @@ app.get('/user_delete/:id', function (req, res) {
 
 app.get('/product_report/:pid',function (req, res) {
     var id = req.params.pid;
-    var sql = `select product_id, title, products.price, purchase_id, quantity from products, purchase_items where products.id = product_id and product_id = ${id}`;
+    var sql = `select product_id, title, products.price, purchase_id, quantity 
+               from products, purchase_items 
+               where products.id = product_id 
+               and product_id = ${id}`;
     db.any(sql)
         .then(function(data){
             console.log('DATA:'+data);
@@ -227,7 +230,11 @@ app.get('/product_report/:pid',function (req, res) {
  });
 
  app.get('/report_user',function (req, res) {
-    var sql = `select p.title,pu.name,sum(i.price),pu.zipcode from products p,purchases pu,purchase_items i group by p.title,pu.name,pu.zipcode order by sum(i.price) DESC limit 50`;
+    var sql = `select p.title,pu.name,sum(i.price),pu.zipcode 
+               from products p,purchases pu,purchase_items i 
+               group by p.title,pu.name,pu.zipcode 
+               order by sum(i.price) DESC 
+               limit 50`;
     db.any(sql)
         .then(function(data){
             console.log('DATA:'+data);
@@ -239,7 +246,11 @@ app.get('/product_report/:pid',function (req, res) {
  });
 
  app.get('/report_products',function (req, res) {
-    var sql = `select p.title,sum(p.price) from products p,purchase_items pu group by p.title order by sum(p.price) DESC limit 50`;
+    var sql = `select p.title,sum(p.price) 
+    from products p,purchase_items pu 
+    group by p.title 
+    order by sum(p.price) DESC 
+    limit 50`;
     db.any(sql)
         .then(function(data){
             console.log('DATA:'+data);
