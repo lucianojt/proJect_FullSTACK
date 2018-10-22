@@ -239,11 +239,7 @@ app.get('/product_report/:pid',function (req, res) {
  });
 
  app.get('/report_products',function (req, res) {
-    var sql = `select p.title,sum(p.price)
-    from products p,purchase_items pu
-    group by p.title
-    order by sum(p.price) DESC
-    limit 50`;
+    var sql = `select p.title,sum(p.price) from products p,purchase_items pu group by p.title order by sum(p.price) DESC limit 50`;
     db.any(sql)
         .then(function(data){
             console.log('DATA:'+data);
