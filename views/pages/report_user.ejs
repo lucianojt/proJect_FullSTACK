@@ -1,24 +1,24 @@
 <% include ../partials/header %>
-<h1 class="text-center">??DKVD????</h1>
+<h1 class="text-center">Report user</h1>
     <table class="table">
         <thead>
             <tr>
-                <th>Title</th>
                 <th>Name</th>
-                <th>Quantity</th>
+                <th>Title</th>
+                <th>Total Price</th>
             </tr>
         </thead>
         <tbody id="myTable">
             <% reportu.forEach(function(reportu){%>
                 <tr>
                     <td scope="row">
-                        <%=reportu.title %>
-                    </td>
-                    <td> 
                         <%=reportu.name %>
                     </td>
                     <td> 
-                        <%=reportu.quantity %>
+                        <%=reportu.title %>
+                    </td>
+                    <td> 
+                        <%=reportu.sum %>
                     </td>
                 </tr>
                 <%}); %>
