@@ -223,34 +223,43 @@ app.get('/product_report/:pid',function (req, res) {
         .then(function(data){
             console.log('DATA:'+data);
             res.render('pages/report_product' , { report:data})
-    
         })
         .catch(function(data){
                 console.log('ERROR:'+console.error);
     })
-
-    
  });
+
  app.get('/report_user',function (req, res) {
-    var sql = `select p.title,pu.name,sum(i.price)
+    var sql = `select p.title,pu.name,sum(i.price),pu.zipcode
     from products p,purchases pu,purchase_items i
-    group by p.title,pu.name
-    order by sum(i.price)
-    limit 5`;
+    group by p.title,pu.name,pu.zipcode
+    order by sum(i.price) DESC
+    limit 50`;
     db.any(sql)
         .then(function(data){
             console.log('DATA:'+data);
             res.render('pages/report_user' , { reportu:data})
-    
         })
         .catch(function(data){
                 console.log('ERROR:'+console.error);
     })
-
-    
  });
 
-
+ app.get('/report_products',function (req, res) {
+    var sql = `select p.title,sum(p.price)
+    from products p,purchase_items pu
+    group by p.title
+    order by sum(p.price) DESC
+    limit 50`;
+    db.any(sql)
+        .then(function(data){
+            console.log('DATA:'+data);
+            res.render('pages/report_products' , { product_report:data})
+        })
+        .catch(function(data){
+                console.log('ERROR:'+console.error);
+    })
+ });
 
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
